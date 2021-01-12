@@ -106,8 +106,4 @@ B3.configure(text='''Delete''')
 
 
 
-C1 = ttk.Checkbutton(root)
-C1.place(relx=0.317,rely=0.778, relwidth=0.317, relheight=0.0, height=21)
-C1.configure(text='i agree with terms')
-
 root.mainloop()
