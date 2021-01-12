@@ -54,10 +54,11 @@ def insert_info():
             c.execute("INSERT INTO Student (ID,Email,Password) VALUES(?,?,?)", (id1, uname, password1))
             conn.commit()
             conn.close()
+            messagebox.showinfo('Register Form', 'Account Created Successfully!')
             Entry1.delete(0, END)
             Entry2.delete(0, END)
             Entry3.delete(0, END)
-            Entry4.delete(0, END) 
+            Entry4.delete(0, END)
         except  sqlite3.IntegrityError:
             messagebox.showerror('Register Form', f'Please use another id instead of {Entry1.get()} because that id exists')
             Entry1.focus()
