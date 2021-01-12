@@ -13,17 +13,19 @@ def delete():
     if(Entry1.get()==''):
         messagebox.showerror('Register-Form', 'ID Is compolsary for delete')
     else:
-        conn = sqlite3.connect('userinfo.db')
-        with conn:
-            c = conn.cursor()
-        c.execute("delete from student where id='"+ Entry1.get() +"'")
-        c.execute('commit')
-        Entry1.delete(0, END)
-        Entry2.delete(0, END)
-        Entry3.delete(0, END)
-        Entry4.delete(0, END)
-        messagebox.showwarning('Delete Status', 'Deleted Succesfully')
-        conn.close()
+        ms = messagebox.askokcancel('Delete Result', 'Would you like to delete this account?')
+        if (ms):
+            conn = sqlite3.connect('userinfo.db')
+            with conn:
+                c = conn.cursor()
+            c.execute("delete from student where id='"+ Entry1.get() +"'")
+            c.execute('commit')
+            Entry1.delete(0, END)
+            Entry2.delete(0, END)
+            Entry3.delete(0, END)
+            Entry4.delete(0, END)
+            messagebox.showwarning('Delete Status', 'Deleted Succesfully')
+            conn.close()
 
 def sign_in():
         root.destroy()
@@ -35,12 +37,6 @@ def insert_info():
     password=Entry3.get()
     if (idp=='' and password=='' and un==''):
         messagebox.showerror('Submit Status', 'All fields are requierd')
-    if idp != int:
-        messagebox.showerror('ID error', 'please use an integer in ID Form')
-        Entry1.delete(0, END)
-        Entry2.delete(0, END)
-        Entry3.delete(0, END)
-        Entry4.delete(0, END) 
     elif Entry3.get() != Entry4.get():
             messagebox.showerror('register error', 'please confirm password')
             Entry4.delete(0, END) 
