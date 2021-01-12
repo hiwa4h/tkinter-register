@@ -34,17 +34,17 @@ def insert_info():
     un=Entry2.get()
     password=Entry3.get()
     if (idp=='' and password=='' and un==''):
-        messagebox.showerror('Submit Status', 'There was something wrong in the register form')
+        messagebox.showerror('Submit Status', 'All fields are requierd')
+    if idp != int:
+        messagebox.showerror('ID error', 'please use an integer in ID Form')
         Entry1.delete(0, END)
         Entry2.delete(0, END)
         Entry3.delete(0, END)
         Entry4.delete(0, END) 
     elif Entry3.get() != Entry4.get():
             messagebox.showerror('register error', 'please confirm password')
-            Entry1.delete(0, END)
-            Entry2.delete(0, END)
-            Entry3.delete(0, END)
             Entry4.delete(0, END) 
+            Entry4.focus()
     else:
         try:
             id1=Entry1.get();
